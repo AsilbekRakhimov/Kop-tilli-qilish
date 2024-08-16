@@ -7,6 +7,7 @@ const router = Router();
 
 router.post("/", validationMiddleware(createCategorySchema),categoryController.createCategory);
 router.get("/",categoryController.getCategories);
+router.get("/:id",categoryController.getCategory);
 
 
 export default router;
