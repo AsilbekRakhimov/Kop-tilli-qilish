@@ -1,4 +1,5 @@
 import { CreateException } from "../../errors/create.exception.js";
+import { DeleteDataException } from "../../errors/delete.exception.js";
 import { GetDataException } from "../../errors/get-data.error.js";
 import { UpdateException } from "../../errors/update.exception.js";
 import { category } from "./category.schema.js";
@@ -116,6 +117,18 @@ class CategoryService {
     }
   }
   // update category
+
+  // deleteCategory 
+   async deleteOneCategory(id){
+    try {
+        const data = await this.#_model.deleteOne({_id:id})
+        return data
+    } catch (error) {
+        throw new DeleteDataException("Error in service while deleting category")
+    }
+   }
+  // deleteCategory 
+
 
 }
 

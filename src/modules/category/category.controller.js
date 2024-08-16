@@ -74,6 +74,21 @@ class CategoryController {
   }
   // update category
 
+  // delete category
+  deleteCategory = async (req,res) => {
+    try {
+        const data = await this.#_service.deleteOneCategory(req.params.id);
+        res.status(200).send({
+            message:"Category is deleted"
+        })
+    } catch (error) {
+        res.status(409).send({
+            message:"Error with deleting category"
+        })
+    }
+  }
+  // delete category
+
 }
 
 export default new CategoryController();
