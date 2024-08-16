@@ -41,19 +41,19 @@ class CategoryService {
     try {
       if (language == "english") {
         const data = await this.#_model
-          .find()
+          .find().populate('products', "name_en cost")
           .select("name_en description_en products");
         return data;
       }
       if (language == "russian") {
         const data = await this.#_model
-          .find()
+          .find().populate("products", "name_ru cost")
           .select("name_ru description_ru products");
         return data;
       }
       if (language == "uzbek") {
         const data = await this.#_model
-          .find()
+          .find().populate("products","name cost")
           .select("name description products");
         return data;
       }
@@ -70,19 +70,19 @@ class CategoryService {
     try {
       if (language == "english") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate('products', "name_en cost")
           .select("name_en description_en products");
         return data;
       }
       if (language == "russian") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate('products', "name_ru cost")
           .select("name_ru description_ru products");
         return data;
       }
       if (language == "uzbek") {
         const data = await this.#_model
-          .findById(id)
+          .findById(id).populate('products', "name cost")
           .select("name description products");
         return data;
       }
