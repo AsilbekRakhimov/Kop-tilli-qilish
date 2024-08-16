@@ -57,6 +57,23 @@ class CategoryController {
     }
   };
   // get one category
+
+  // update category
+  updateCategory = async (req, res) => {
+    try {
+        const id = req.params.id
+        const data = await this.#_service.updateOneCategory({...req.body, id})
+        res.status(203).send({
+            message:"Data is updated"
+        })
+    } catch (error) {
+        res.status(409).send({
+            message:"Error with updating category"
+        })
+    }
+  }
+  // update category
+
 }
 
 export default new CategoryController();
